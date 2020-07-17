@@ -41,35 +41,49 @@ class LinkedList:
     def reverse_list(self, node, prev):
         
         #takes care of the first two reverse
-        print(f'HEAD {node}')
-        if (node == None) or (node.next_node == None):
-            return node
+        # print(f'HEAD {node}')
+        # if (node == None) or (node.next_node == None):
+        #     return node
 
 #--------
-#this almost works
-        the_next_node = node.next_node
-        print(the_next_node.value)
+#iterative solution
+        # the_next_node = node.next_node
+        # print(the_next_node.value)
 
-        reversed_list = node
-        reversed_list.next_node = None
-        print(reversed_list.value)
+        # reversed_list = node
+        # reversed_list.next_node = None
+        # print(reversed_list.value)
 
-        while the_next_node != None:
-            print(the_next_node.value)
-            temp = the_next_node
-            the_next_node = the_next_node.next_node
-
-            temp.next_node = reversed_list
-            reversed_list = temp
-        
-        self.head = reversed_list
-        
-        return reversed_list
-
-
-        #___________
+        # while the_next_node != None:
+        #     print(the_next_node.value)
+        #     temp = the_next_node
+        #     the_next_node = the_next_node.next_node
 
         #     temp.next_node = reversed_list
+        #     reversed_list = temp
+        
+        # self.head = reversed_list
+        
+        # return reversed_list
+        #___________
+
+## recursive solution
+
+        
+        if (node == None):
+            return
+        print(f'NODE VALUE: {node.value}')
+        the_next_node = node.next_node
+        node.next_node = prev
+
+        if the_next_node is not None:
+            self.reverse_list(node=the_next_node, prev=node)
+        else:
+            self.head = node
+        
+
+
+        #   temp.next_node = reversed_list
         #     reversed_list = temp
         # return reversed_list
 
