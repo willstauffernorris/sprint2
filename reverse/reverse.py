@@ -57,10 +57,12 @@ class LinkedList:
         while the_next_node != None:
             print(the_next_node.value)
             temp = the_next_node
-            next_node = the_next_node.next_node
+            the_next_node = the_next_node.next_node
 
             temp.next_node = reversed_list
             reversed_list = temp
+        
+        self.head = reversed_list
         
         return reversed_list
 
